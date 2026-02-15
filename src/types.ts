@@ -1,11 +1,10 @@
-export type DriftType = 'removed-endpoint' | 'changed-params' | 'changed-schema' | 'deprecated';
-
-export interface DriftResult {
-  snippetFile: string;
-  lineStart: number;
-  lineEnd: number;
-  endpoint: string;
-  driftType: DriftType;
-  severity: 'error' | 'warning';
-  message: string;
+export interface DocPulseConfig {
+  /** Path to OpenAPI spec file (JSON or YAML) */
+  specFile: string;
+  /** Glob pattern(s) for documentation files */
+  docsGlob: string | string[];
+  /** Output format */
+  format: 'json' | 'table' | 'github';
+  /** Endpoint patterns to skip during validation */
+  ignore: string[];
 }
