@@ -1,0 +1,46 @@
+{
+  "name": "docpulse",
+  "version": "1.0.0",
+  "description": "Detect stale API code examples in your documentation",
+  "main": "dist/index.js",
+  "bin": {
+    "docpulse": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --forceExit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["openapi", "documentation", "api", "testing", "cli", "sarif"],
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "glob": "^10.3.10",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": ["<rootDir>/src"],
+    "transform": {
+      "^.+\\.ts$": ["ts-jest", {
+        "tsconfig": {
+          "module": "commonjs",
+          "target": "es2020",
+          "esModuleInterop": true,
+          "strict": true,
+          "outDir": "dist",
+          "rootDir": "src"
+        }
+      }]
+    }
+  }
+}
